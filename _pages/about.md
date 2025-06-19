@@ -7,7 +7,7 @@ redirect_from:
   - /about.html
 ---
 
-![](/images/millenium-falcon.JPEG){: .align-right width="300px"}
+![](/images/millenium-falcon.JPEG){: .align-right width="350px"}
 
 
 I am a Ph.D. Candidate in the Systems Control Group at University of Toronto, where I also completed my B.A.Sc. (with Honours) and M.A.Sc. in 2020 and 2022, respectively. My thesis is in data-driven control theory; specifically, I am developing low-gain controllers to solve the disturbance rejection problem in unknown linear time-invariant systems using frequency response and input-output data. I am fortunate to be supervised by [Prof. John W. Simpson-Porco](https://www.control.utoronto.ca/~jwsimpson/) for my Ph.D. and M.A.Sc., and proud to be a recipient of the [NSERC PGS-D](https://www.nserc-crsng.gc.ca/Students-Etudiants/PG-CS/BellandPostgrad-BelletSuperieures_eng.asp), [OGS](https://www.sgs.utoronto.ca/awards/ontario-graduate-scholarship/), and the [Hatch Graduate Scholarship for Sustainable Energy Research](https://energy.utoronto.ca/). 
