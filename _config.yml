@@ -9,7 +9,7 @@
 # Basic Site Settings
 locale                   : "en-CA"
 site_theme               : "default"
-title                    : "Liangjie (Jeffrey) Chen"
+title                    : "Homepage"
 title_separator          : "-"
 name                     : &name "Liangjie (Jeffrey) Chen"
 description              : &description "personal description"
@@ -60,7 +60,7 @@ author:
   keybase          : # Username
   instagram        : # Username
   lastfm           : # Username
-  linkedin         : # Username
+  linkedin         : "jchen975"
   mastodon         : # URL
   medium           : # URL
   pinterest        : # Username
