@@ -78,8 +78,6 @@ author:
 
 # Publication Category - The following the list of publication categories and their headings
 publication_category:
-  # books:
-  #   title: 'Books'
   journals:
     title: 'Journal Papers'    
   conferences:
@@ -190,7 +188,6 @@ exclude:
   - README
   - tmp
   - vendor
-  - images
 keep_files:
   - .git
   - .svn
@@ -266,16 +263,16 @@ defaults:
   # _publications
   - scope:
       path: ""
-      type: publications
+      type: research
     values:
       layout: single
       author_profile: true
       share: true
       comments: true
-  # _portfolio
+  # _posts
   - scope:
       path: ""
-      type: portfolio
+      type: posts
     values:
       layout: single
       author_profile: true
