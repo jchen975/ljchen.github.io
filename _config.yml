@@ -78,12 +78,16 @@ author:
 
 # Publication Category - The following the list of publication categories and their headings
 publication_category:
-  books:
-    title: 'Books'
+  # books:
+  #   title: 'Books'
   manuscripts:
     title: 'Journal Articles'    
   conferences:
     title: 'Conference Papers'
+  others:
+    title: 'Others'
+  thesis:
+    title: 'Thesis'
 
 # Site Settings
 teaser                   :  # filename of teaser fallback teaser image placed in /images/, .e.g. "500x300.png"
@@ -186,6 +190,7 @@ exclude:
   - README
   - tmp
   - vendor
+  - images
 keep_files:
   - .git
   - .svn
@@ -215,18 +220,18 @@ kramdown:
 
 # These settings control the types of collections used by the template
 collections:
-  teaching:
+  # teaching:
+  #   output: true
+  #   permalink: /:collection/:path/
+  research:
     output: true
-    permalink: /:collection/:path/
-  publications:
+    permalink: /research/:path/
+  posts:
     output: true
-    permalink: /:collection/:path/
-  portfolio:
-    output: true
-    permalink: /:collection/:path/
-  talks:
-    output: true
-    permalink: /:collection/:path/
+    permalink: /posts/:path/
+  # talks:
+  #   output: true
+  #   permalink: /:collection/:path/
 
 
 # These settings control how pages and collections are included in the site
