@@ -23,11 +23,13 @@ main:
   - title: "Posts"
     url: /posts/
     
+  - title: "Misc"
+    url: /misc/
+
   - title: "CV"
     url: /files/cv.pdf
     
   # - title: "CV"
   #   url: /cv-json/
     
-  - title: "Misc"
-    url: /misc/
+
