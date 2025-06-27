@@ -222,10 +222,10 @@ collections:
   #   permalink: /:collection/:path/
   research:
     output: true
-    permalink: /research/:path/
+    permalink: /:collection/:path/
   posts:
     output: true
-    permalink: /posts/:path/
+    permalink: /:collection/:path/
   # talks:
   #   output: true
   #   permalink: /:collection/:path/
