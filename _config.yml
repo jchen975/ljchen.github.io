@@ -80,13 +80,13 @@ author:
 publication_category:
   # books:
   #   title: 'Books'
-  manuscripts:
-    title: 'Journal Articles'    
+  journals:
+    title: 'Journal Papers'    
   conferences:
     title: 'Conference Papers'
   others:
     title: 'Others'
-  thesis:
+  theses:
     title: 'Thesis'
 
 # Site Settings
