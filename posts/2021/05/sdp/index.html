@@ -295,12 +295,12 @@
 <p>Semidefinite programs (SDPs) are a specific type of \textit{conic form programs}, which is a subclass of convex optimization problems with respect to the <a href="https://en.wikipedia.org/wiki/Loewner_order">Lowener order</a>, that is, the cone of (symmetric) positive semidefinite matrices denoted as \(\mathbb{S}_{+}^{n}\). SDPs are typically formulated as</p>
 
 \[\begin{array}{cl}
-    \text{minimize}_{x \in \mathbb{R}^n} &amp; {c}^{\mathsf{T}}x  \\ 
-    \text{such that} &amp; F_0 + x_1F_1 + \cdots + x_n F_n \succeq \mathbf{0} \\
+    \min_{x \in \mathbb{R}^n} &amp; {c}^{\mathsf{T}}x  \\ 
+    \text{s.t.} &amp; F_0 + x_1F_1 + \cdots + x_n F_n \succeq \mathbf{0} \\
     &amp; Gx = h
 \end{array}\]
 
-<p>where \(c \in \mathbb{R}^n\), \(G \in \mathbb{R}^{p\times n}\), and each \(F_i\) is an \(m \times m\) real symmetric matrix, denoted by \(F_i \in \mathbb{S}^m\). The inequality constraint is known as a <em>linear matrix inequality</em> (LMI), which is a generalized inequality. Note that, while the decision variable in the SDP above is the vector \(x \in \mathbb{R}^n\), they can often appear as bona fide matrices (and not necessarily symmetric matrices), e.g., for \(i \in \{1, \dots, N\}\), \(A_i, B_i, C_i\) are constant matrices of size \(n \times n, n \times n, n \times m\), and \(X \in \mathbb{S}^n_{++}\) and \(Y \in \mathbb{R}^{m \times n}\) are decision variables, then</p>
+<p>where \(c \in \mathbb{R}^n, G \in \mathbb{R}^{p\times n}, h \in \mathbb{R}^p\), and each \(F_i\) is an \(m \times m\) real symmetric matrix, denoted by \(F_i \in \mathbb{S}^m\). The inequality constraint is known as a <em>linear matrix inequality</em> (LMI), which is a generalized inequality. Note that, while the decision variable in the SDP above is the vector \(x \in \mathbb{R}^n\), they can often appear as bona fide matrices (and not necessarily symmetric matrices), e.g., for \(i \in \{1, \dots, N\}\), \(A_i, B_i, C_i\) are constant matrices of size \(n \times n, n \times n, n \times m\), and \(X \in \mathbb{S}^n_{++}\) and \(Y \in \mathbb{R}^{m \times n}\) are decision variables, then</p>
 
 \[F(X) \triangleq F_0 + \sum_{i = 1}^N A_i X B_i + B_i^{\mathsf{T}} X A_i^{\mathsf{T}} + C_i Y + Y^{\mathsf{T}} C_i^{\mathsf{T}}  \succeq \mathbf{0}\]
 
