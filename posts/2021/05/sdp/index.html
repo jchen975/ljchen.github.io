@@ -296,13 +296,13 @@
 
 \[\begin{array}{cl}
     \text{minimize}{x \in \mathbb{R}^n} &amp; {c}^{\mathsf{T}}x  \\\\
-    \text{such that} &amp; F\_0 + x\_1F\_1 + \cdots + x\_n F\_n \succeq \mathbf{0} \\\\ 
+    \text{such that} &amp; F_0 + x_1F_1 + \cdots + x_n F_n \succeq \mathbf{0} \\\\ 
     &amp; Gx = h
 \end{array}\]
 
 <p>where \(c \in \mathbb{R}^n\), \(G \in \mathbb{R}^{p\times n}\), and each \(F_i\) is an \(m \times m\) real symmetric matrix, denoted by \(F_i \in \mathbb{S}^m\). The inequality constraint is known as a <em>linear matrix inequality</em> (LMI), which is a generalized inequality. Note that, while the decision variable in the SDP above is the vector \(x \in \mathbb{R}^n\), they can often appear as bona fide matrices (and not necessarily symmetric matrices), e.g., for \(i \in \{1, \dots, N\}\), \(A_i, B_i, C_i\) are constant matrices of size \(n \times n, n \times n, n \times m\), and \(X \in \mathbb{S}^n_{++}\) and \(Y \in \mathbb{R}^{m \times n}\) are decision variables, then</p>
 
-\[F(X) \triangleq F_0 + \sum_{i = 1}^N A\_i X B\_i + B^{\mathsf{T}}\_i X A^{\mathsf{T}}\_i + C\_i Y + Y^{\mathsf{T}} C^{\mathsf{T}}\_i  \succeq \mathbf{0}\]
+\[F(X) \triangleq F_0 + \sum_{i = 1}^N A_i X B_i + B_i^{\mathsf{T}} X A_i^{\mathsf{T}} + C_i Y + Y^{\mathsf{T}} C_i^{\mathsf{T}}  \succeq \mathbf{0}\]
 
 <p>is a perfectly valid LMI.</p>
 
