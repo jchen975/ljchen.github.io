@@ -10,15 +10,6 @@
 main:
   - title: "Research"
     url: /research/
-
-  # - title: "Talks"
-  #   url: /talks/    
-
-  # - title: "Teaching"
-  #   url: /teaching/    
-    
-  # - title: ""
-  #   url: /portfolio/
         
   - title: "Posts"
     url: /posts/
@@ -27,9 +18,5 @@ main:
     url: /misc/
 
   - title: "CV"
-    url: /files/cv.pdf
-    
-  # - title: "CV"
-  #   url: /cv-json/
-    
+    url: /files/cv.pdf 
 
