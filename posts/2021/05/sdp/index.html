@@ -289,18 +289,22 @@
       <section class="page__content" itemprop="text">
         <p>In this post, I derive two equivalent formulations of a semidefinite program.</p>
 
-<p>Acknowledgement: this problem appears as a homework question in Prof. Stark Draper’s ECE1505 Convex Optimization at the University of Toronto.</p>
+<p><em>Acknowledgement: this problem appears as a homework question in Prof. Stark Draper’s course, ECE1505 Convex Optimization, at the University of Toronto.</em></p>
 
 <h1 id="semidefinite-programs">Semidefinite programs</h1>
-<p>Semidefinite programs (SDPs) are a specific type of \textit{conic form programs}, which is a subclass of convex optimization problems with respect to generalized inequalities; specifically, the cone of (symmetric) positive semidefinite matrices denoted as $\mathbb{S}_{+}^{n}$. SDPs are typically formulated as 
-\(\begin{array}{cl}
+<p>Semidefinite programs (SDPs) are a specific type of \textit{conic form programs}, which is a subclass of convex optimization problems with respect to the <a href="https://en.wikipedia.org/wiki/Loewner_order">Lowener order</a>, that is, the cone of (symmetric) positive semidefinite matrices denoted as \(\mathbb{S}_{+}^{n}\). SDPs are typically formulated as</p>
+
+\[\begin{array}{cl}
     \text{minimize}{x \in \mathbb{R}^n} &amp; {c}^{\mathsf{T}}x  \\\\
     \text{such that} &amp; F\_0 + x\_1F\_1 + \cdots + x\_n F\_n \succeq \mathbf{0} \\\\ 
     &amp; Gx = h
-\end{array}\)
-where \(c \in \mathbb{R}^n\), \(G \in \mathbb{R}^{p\times n}\), and each \(F_i\) is an \(m \times m\) real symmetric matrix, denoted by \(F_i \in \mathbb{S}^m\). The inequality constraint is known as a <em>linear matrix inequality</em> (LMI), which is a generalized inequality. Note that, while the decision variable in the SDP above is the vector \(x \in \mathbb{R}^n\), they can often appear as bona fide matrices (and not necessarily symmetric matrices), e.g., for \(i \in \{1, \dots, N\}\), \(A_i, B_i, C_i\) are constant matrices of size \(n \times n, n \times n, n \times m\), and \(X \in \mathbb{S}^n_{++}\) and \(Y \in \mathbb{R}^{m \times n}\) are decision variables, then 
-\(F(X) \triangleq F_0 + \sum_{i = 1}^N A\_i X B\_i + B\_i^{\mathsf{T}} X A\_i^{\mathsf{T}} + C\_i Y + Y^{\mathsf{T}} C\_i^{\mathsf{T}}  \succeq \mathbf{0}\)<br />
-is a perfectly valid LMI.</p>
+\end{array}\]
+
+<p>where \(c \in \mathbb{R}^n\), \(G \in \mathbb{R}^{p\times n}\), and each \(F_i\) is an \(m \times m\) real symmetric matrix, denoted by \(F_i \in \mathbb{S}^m\). The inequality constraint is known as a <em>linear matrix inequality</em> (LMI), which is a generalized inequality. Note that, while the decision variable in the SDP above is the vector \(x \in \mathbb{R}^n\), they can often appear as bona fide matrices (and not necessarily symmetric matrices), e.g., for \(i \in \{1, \dots, N\}\), \(A_i, B_i, C_i\) are constant matrices of size \(n \times n, n \times n, n \times m\), and \(X \in \mathbb{S}^n_{++}\) and \(Y \in \mathbb{R}^{m \times n}\) are decision variables, then</p>
+
+\[F(X) \triangleq F_0 + \sum_{i = 1}^N A\_i X B\_i + B^{\mathsf{T}}\_i X A^{\mathsf{T}}\_i + C\_i Y + Y^{\mathsf{T}} C^{\mathsf{T}}\_i  \succeq \mathbf{0}\]
+
+<p>is a perfectly valid LMI.</p>
 
 <h1 id="to-be-completed">TO BE COMPLETED.</h1>
 
