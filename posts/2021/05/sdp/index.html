@@ -155,6 +155,9 @@
 
         zero: "\\mathbf{0}",
         one: "\\mathbf{1}"
+      },
+      equationNumbers: {
+        autoNumber: "AMS"
       }
     }
   });
@@ -409,7 +412,7 @@ Analogous to the decomposition of \(x\), we can decompose the cost coefficient \
 <p>is a diagonal matrix with the \(j,\ell\)-th elements of matrices \(F_1, \dots, F_n\) on its main diagonal. Thus, we can verify that</p>
 
 \[\begin{align}
-    \trace(\tilde{F}_{j\ell} X) &amp;= \trace(\Delta_{\ell j} \tilde{X}) + \sum_{i=1}^n x_i^+ (F_i)_{j\ell} - \sum_{i=1}^n x_i^- (F_i)_{ij} \nonumber \\
+    \trace(\tilde{F}_{j\ell} X) &amp;= \trace(\Delta_{\ell j} \tilde{X}) + \sum_{i=1}^n x_i^+ (F_i)_{j\ell} - \sum_{i=1}^n x_i^- (F_i)_{j\ell} \nonumber \\
                         &amp;= \tilde{X}_{j\ell} + \sum_{i=1}^n(x_i^+  - x_i^-) (F_i)_{j\ell} \nonumber \\
                         &amp;= -(F_0)_{j\ell} - \sum_{i=1}^n x\_i (F_i)_{j\ell} +  \sum_{i=1}^n x\_i (F_i)_{j\ell} \nonumber \\
                         &amp;= -(F_0)_{j\ell}  \label{eq:eq-constraint-lmi}
@@ -417,16 +420,19 @@ Analogous to the decomposition of \(x\), we can decompose the cost coefficient \
 
 <p>There are a total of \(m(m+1)/2\) constraints like \eqref{eq:eq-constraint-lmi}, and they form the first part of the equality trace constraints in \eqref{eq:sdp-trace}. The second and the last part comes from \(Gx = h\) in \eqref{eq:sdp-lmi}, which can be transformed by constructing</p>
 
-\[\label{eq:G-tilde}
-    \tilde{G}_{i} \define \begin{bmatrix}
-        \zero_{m \times m} &amp; \\
-        &amp; \diag(\transpose{\e}_i G) \\
+<p>\begin{equation} \label{eq:G-tilde}
+    \tilde{G}<em>{i} \define \begin{bmatrix}
+        \zero</em>{m \times m} &amp; <br />
+        &amp; \diag(\transpose{\e}_i G) <br />
         &amp; &amp; -\diag(\transpose{\e}_i G) 
-    \end{bmatrix} \inR^{(m+2n)\times (m+2n)}\]
+    \end{bmatrix} \inR^{(m+2n)\times (m+2n)}
+\end{equation}</p>
 
 <p>in which \(\transpose{\e}_i G \inR^n\) selects the \(i\)-th row of \(G\). For \(i \in \{1, \dots, p\}\), \(\transpose{\e}_i G x = h_i\), so \(Gx = h\) in \eqref{eq:sdp-lmi} is equivalent to the \(p\) trace constraints</p>
 
-\[\tilde{G}_i X = h_i\]
+\[\begin{equation}
+\tilde{G}_i X = h_i.
+\end{equation}\]
 
 <p>Thus, from \eqref{eq:sdp-trace}, we have a total of</p>
 
