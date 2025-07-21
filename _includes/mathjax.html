@@ -1,6 +1,8 @@
 <script>
 window.MathJax = {
   tex: {
+    packages: ['base', 'ams'],
+    tags: 'ams',
     macros: {
       inR: "\\in \\mathbb{R}",
       inC: "\\in \\mathbb{C}",
@@ -26,9 +28,7 @@ window.MathJax = {
       pinv: ["{#1}^{\\dagger}", 1],
       zero: "\\mathbf{0}",
       one: "\\mathbf{1}"
-    },
-    packages: ['base', 'ams'],
-    tags: 'ams'
+    }
   }
 };
 </script>
