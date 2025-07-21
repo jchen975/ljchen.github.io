@@ -122,8 +122,6 @@
     <script>
 window.MathJax = {
   tex: {
-    packages: ['base', 'ams'],
-    tags: 'ams',
     macros: {
       inR: "\\in \\mathbb{R}",
       inC: "\\in \\mathbb{C}",
@@ -132,34 +130,32 @@ window.MathJax = {
       inQ: "\\in \\mathbb{Q}",
       inF: "\\in \\mathbb{F}",
       inS: "\\in \\mathbb{S}",
-
-      j: "\\boldsymbol{\\mathbf{j}}",
-      e: "\\boldsymbol{\\mathbf{e}}",
+      j: "\\boldsymbol{\\mathrm{j}}",
+      e: "\\boldsymbol{\\mathrm{e}}",
       re: "\\mathrm{Re}",
       im: "\\mathrm{Im}",
       det: "\\mathrm{det}",
-
       minimize: ["\\underset{#1}{\\mathrm{minimize}}", 1],
       maximize: ["\\underset{#1}{\\mathrm{maximize}}", 1],
       st: "\\mathrm{subject\\ to}",
-
       trace: "\\mathrm{tr}",
       diag: "\\mathrm{diag}",
-
       goesto: "\\rightarrow",
       implies: "\\Rightarrow",
       define: "\\triangleq",
-
       transpose: ["{#1}^{\\mathsf{T}}", 1],
       pinv: ["{#1}^{\\dagger}", 1],
-
       zero: "\\mathbf{0}",
       one: "\\mathbf{1}"
-    }
+    },
+    packages: ['base', 'ams']
+  },
+  loader: {
+    load: ['[tex]/ams']
   }
 };
 </script>
-<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/startup.js" id="MathJax-script"></script>
   </head>
 
   <body>
@@ -347,7 +343,7 @@ window.MathJax = {
 
 \[F(X,Y) \define F_0 + \sum_{i = 1}^N A_i X B_i + \transpose{B}_i X \transpose{A}_i + C_i Y + \transpose{Y} \transpose{C}_i \succeq \zero\]
 
-<p>is a perfectly valid LMI in \(X\) and \(Y\). This form of LMIs often appear in SDPs used in, e.g., systems control theory.</p>
+<p>is a perfectly valid LMI in \(X\) and \(Y\). This form of LMIs often appears in SDPs used in, e.g., systems control theory.</p>
 
 <h2 id="equivalent-sdp-formulation-using-trace-of-a-square-matrix">Equivalent SDP formulation using trace of a square matrix</h2>
 <p>The goal of this post is to show that, another SDP formulation, now written with the trace of a matrix, denoted by \(\trace(\cdot)\),</p>
@@ -364,7 +360,7 @@ window.MathJax = {
 
 \[\trace(\transpose{X}Y) = \trace(X\transpose{Y}) = \langle X, Y \rangle = \sum_{i=1}^{m}\sum_{j=1}^n X_{ij}Y_{ij}.\]
 
-<p>There are many additional properties of the matrix trace and its generalization that we will not discuss here, and we include some relative references at the end of this post.</p>
+<p>There are many additional properties of the matrix trace and its generalization that we will not discuss here, and we include some relevant references at the end of this post.</p>
 
 <p>We are now ready to convert \eqref{eq:sdp-lmi} into \eqref{eq:sdp-trace}. First, from the left-hand side of the LMI in \eqref{eq:sdp-lmi}, define a slack variable from the left-hand side of the LMI in \eqref{eq:sdp-lmi}:</p>
 
@@ -379,7 +375,7 @@ window.MathJax = {
     &amp; &amp; \diag(x^-)
 \end{bmatrix} \inR^{(m+2n) \times (m+2n)}\]
 
-<p>is exactly the decision variable in \eqref{sdp-trace}. As a sanity check, since \(F(x) \preceq \zero\) in \eqref{eq:sdp-lmi}, the new decision variable $X$ above is positive semidefinite, and should be a sparse matrix provided that \(m\) is not significantly larger than \(n\). 
+<p>is exactly the decision variable in \eqref{eq:sdp-trace}. As a sanity check, since \(F(x) \preceq \zero\) in \eqref{eq:sdp-lmi}, the new decision variable $X$ above is positive semidefinite, and should be a sparse matrix provided that \(m\) is not significantly larger than \(n\). 
 Analogous to the decomposition of \(x\), we can decompose the cost coefficient \(c\) in \eqref{eq:sdp-lmi} as \(c = c^+ - c^-\), in which both \(c^+\) and \(c^-\) are non-negative element-wise, and construct the diagonal matrix</p>
 
 \[C \define \begin{bmatrix}

@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.10.0">Jekyll</generator><link href="https://ljchen.ca/feed.xml" rel="self" type="application/atom+xml" /><link href="https://ljchen.ca/" rel="alternate" type="text/html" /><updated>2025-07-21T22:18:54+00:00</updated><id>https://ljchen.ca/feed.xml</id><title type="html">Homepage</title><subtitle>personal description</subtitle><author><name>Liangjie (Jeffrey) Chen</name></author><entry><title type="html">Equivalent formulations of semidefinite programs using linear matrix inequality and trace</title><link href="https://ljchen.ca/posts/2021/05/sdp/" rel="alternate" type="text/html" title="Equivalent formulations of semidefinite programs using linear matrix inequality and trace" /><published>2021-05-02T00:00:00+00:00</published><updated>2021-05-02T00:00:00+00:00</updated><id>https://ljchen.ca/posts/2021/05/sdp</id><content type="html" xml:base="https://ljchen.ca/posts/2021/05/sdp/"><![CDATA[<p>A semidefinite program written using the linear matrix inequality can be equivalently written using the trace of a matrix.</p>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.10.0">Jekyll</generator><link href="https://ljchen.ca/feed.xml" rel="self" type="application/atom+xml" /><link href="https://ljchen.ca/" rel="alternate" type="text/html" /><updated>2025-07-21T22:34:04+00:00</updated><id>https://ljchen.ca/feed.xml</id><title type="html">Homepage</title><subtitle>personal description</subtitle><author><name>Liangjie (Jeffrey) Chen</name></author><entry><title type="html">Equivalent formulations of semidefinite programs using linear matrix inequality and trace</title><link href="https://ljchen.ca/posts/2021/05/sdp/" rel="alternate" type="text/html" title="Equivalent formulations of semidefinite programs using linear matrix inequality and trace" /><published>2021-05-02T00:00:00+00:00</published><updated>2021-05-02T00:00:00+00:00</updated><id>https://ljchen.ca/posts/2021/05/sdp</id><content type="html" xml:base="https://ljchen.ca/posts/2021/05/sdp/"><![CDATA[<p>A semidefinite program written using the linear matrix inequality can be equivalently written using the trace of a matrix.</p>
 
 <p><em>Acknowledgement: the content of this post originates from a homework question in Prof. Stark Draper’s course, ECE1505 Convex Optimization, at the University of Toronto.</em></p>
 
@@ -17,7 +17,7 @@
 
 \[F(X,Y) \define F_0 + \sum_{i = 1}^N A_i X B_i + \transpose{B}_i X \transpose{A}_i + C_i Y + \transpose{Y} \transpose{C}_i \succeq \zero\]
 
-<p>is a perfectly valid LMI in \(X\) and \(Y\). This form of LMIs often appear in SDPs used in, e.g., systems control theory.</p>
+<p>is a perfectly valid LMI in \(X\) and \(Y\). This form of LMIs often appears in SDPs used in, e.g., systems control theory.</p>
 
 <h2 id="equivalent-sdp-formulation-using-trace-of-a-square-matrix">Equivalent SDP formulation using trace of a square matrix</h2>
 <p>The goal of this post is to show that, another SDP formulation, now written with the trace of a matrix, denoted by \(\trace(\cdot)\),</p>
@@ -34,7 +34,7 @@
 
 \[\trace(\transpose{X}Y) = \trace(X\transpose{Y}) = \langle X, Y \rangle = \sum_{i=1}^{m}\sum_{j=1}^n X_{ij}Y_{ij}.\]
 
-<p>There are many additional properties of the matrix trace and its generalization that we will not discuss here, and we include some relative references at the end of this post.</p>
+<p>There are many additional properties of the matrix trace and its generalization that we will not discuss here, and we include some relevant references at the end of this post.</p>
 
 <p>We are now ready to convert \eqref{eq:sdp-lmi} into \eqref{eq:sdp-trace}. First, from the left-hand side of the LMI in \eqref{eq:sdp-lmi}, define a slack variable from the left-hand side of the LMI in \eqref{eq:sdp-lmi}:</p>
 
@@ -49,7 +49,7 @@
     &amp; &amp; \diag(x^-)
 \end{bmatrix} \inR^{(m+2n) \times (m+2n)}\]
 
-<p>is exactly the decision variable in \eqref{sdp-trace}. As a sanity check, since \(F(x) \preceq \zero\) in \eqref{eq:sdp-lmi}, the new decision variable $X$ above is positive semidefinite, and should be a sparse matrix provided that \(m\) is not significantly larger than \(n\). 
+<p>is exactly the decision variable in \eqref{eq:sdp-trace}. As a sanity check, since \(F(x) \preceq \zero\) in \eqref{eq:sdp-lmi}, the new decision variable $X$ above is positive semidefinite, and should be a sparse matrix provided that \(m\) is not significantly larger than \(n\). 
 Analogous to the decomposition of \(x\), we can decompose the cost coefficient \(c\) in \eqref{eq:sdp-lmi} as \(c = c^+ - c^-\), in which both \(c^+\) and \(c^-\) are non-negative element-wise, and construct the diagonal matrix</p>
 
 \[C \define \begin{bmatrix}
