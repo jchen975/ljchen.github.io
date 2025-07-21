@@ -19,7 +19,7 @@
 
 
 
-<title>Semidefinite program formulations: linear matrix inequality and trace operator - Homepage</title>
+<title>Equivalent formulations of semidefinite programs using linear matrix inequality and trace - Homepage</title>
 
 
 
@@ -67,12 +67,12 @@
 <!-- Open Graph protocol data (https://ogp.me/), used by social media -->
 <meta property="og:locale" content="en-CA">
 <meta property="og:site_name" content="Homepage"> 
-<meta property="og:title" content="Semidefinite program formulations: linear matrix inequality and trace operator">
+<meta property="og:title" content="Equivalent formulations of semidefinite programs using linear matrix inequality and trace">
 
   <meta property="og:type" content="article">
 
 
-  <meta property="og:description" name="description" content="In this post, I derive two equivalent formulations of a semidefinite program.">
+  <meta property="og:description" name="description" content="A semidefinite program written using the linear matrix inequality can be equivalently written using the trace of a matrix.">
 
 
   <meta property="og:url" content="https://ljchen.ca/posts/2021/05/sdp/">
@@ -119,6 +119,47 @@
 
 <!-- end custom head snippets -->
 
+    <script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    TeX: {
+      extensions: ["AMSmath.js", "mathrsfs.js"],
+      tags: "ams",
+      Macros: {
+        inR: "\\in \\mathbb{R}", 
+        inC: "\\in \\mathbb{C}",
+        inZ: "\\in \\mathbb{Z}",
+        inN: "\\in \\mathbb{N}",
+        inQ: "\\in \\mathbb{Q}",
+        inF: "\\in \\mathbb{F}",
+        inS: "\\in \\mathbb{S}",
+
+        j: "\\boldsymbol{\\mathrm{j}}", 
+        e: "\\boldsymbol{\\mathrm{e}}",
+        re: "\\mathrm{Re}",
+        im: "\\mathrm{Im}",
+        det: "\\mathrm{det}",
+
+        minimize: ["\\underset{#1}{\\mathrm{minimize}}", 1],
+        maximize: ["\\underset{#1}{\\mathrm{maximize}}", 1],
+        st: "\\mathrm{subject\\ to}",
+
+        trace: "\\mathrm{tr}",
+        diag: "\\mathrm{diag}",
+
+        goesto: "\\rightarrow",
+        implies: "\\Rightarrow",
+        define: "\triangleq",
+        
+        transpose: ["{#1}^{\\mathsf{T}}", 1], 
+        pinv: ["{#1}^{\\dagger}", 1],
+
+        zero: "\\mathbf{0}",
+        one: "\\mathbf{1}"
+      }
+    }
+  });
+</script>
+<script src="https://cdn.jsdelivr.net/npm/mathjax@2/MathJax.js?config=TeX-AMS_HTML"></script>
   </head>
 
   <body>
@@ -259,22 +300,22 @@
 
 
   <article class="page" itemscope itemtype="http://schema.org/CreativeWork">
-    <meta itemprop="headline" content="Semidefinite program formulations: linear matrix inequality and trace operator">
-    <meta itemprop="description" content="In this post, I derive two equivalent formulations of a semidefinite program.">
+    <meta itemprop="headline" content="Equivalent formulations of semidefinite programs using linear matrix inequality and trace">
+    <meta itemprop="description" content="A semidefinite program written using the linear matrix inequality can be equivalently written using the trace of a matrix.">
     <meta itemprop="datePublished" content="May 02, 2021">
     
 
     <div class="page__inner-wrap">
       
         <header>
-          <h1 class="page__title" itemprop="headline">Semidefinite program formulations: linear matrix inequality and trace operator
+          <h1 class="page__title" itemprop="headline">Equivalent formulations of semidefinite programs using linear matrix inequality and trace
 </h1>
           
             <p class="page__meta"><i class="fa fa-clock" aria-hidden="true"></i> 
 
 
   
-	  1 minute read
+	  6 minute read
 	
 </p>
           
@@ -287,26 +328,119 @@
       
 
       <section class="page__content" itemprop="text">
-        <p>In this post, I derive two equivalent formulations of a semidefinite program.</p>
+        <p>A semidefinite program written using the linear matrix inequality can be equivalently written using the trace of a matrix.</p>
 
-<p><em>Acknowledgement: this problem appears as a homework question in Prof. Stark Draper’s course, ECE1505 Convex Optimization, at the University of Toronto.</em></p>
+<p><em>Acknowledgement: the content of this post originates from a homework question in Prof. Stark Draper’s course, ECE1505 Convex Optimization, at the University of Toronto.</em></p>
 
-<h1 id="semidefinite-programs">Semidefinite programs</h1>
-<p>Semidefinite programs (SDPs) are a specific type of \textit{conic form programs}, which is a subclass of convex optimization problems with respect to the <a href="https://en.wikipedia.org/wiki/Loewner_order">Lowener order</a>, that is, the cone of (symmetric) positive semidefinite matrices denoted as \(\mathbb{S}_{+}^{n}\). SDPs are typically formulated as</p>
+<h2 id="semidefinite-program-and-linear-matrix-inequality">Semidefinite program and linear matrix inequality</h2>
+<p>Semidefinite programs (SDPs) are a specific type of <em>conic form programs</em>, which is a subclass of convex optimization problems with respect to the <a href="https://en.wikipedia.org/wiki/Loewner_order">Lowener order</a>, that is, the cone of (symmetric) positive semidefinite matrices denoted by \(\mathbb{S}_{+}^{n}\). SDPs are typically formulated as</p>
 
-\[\begin{array}{cl}
-    \min_{x \in \mathbb{R}^n} &amp; {c}^{\mathsf{T}}x  \\ 
-    \text{s.t.} &amp; F_0 + x_1F_1 + \cdots + x_n F_n \succeq \mathbf{0} \\
+\[\label{eq:sdp-lmi}
+\begin{array}{cl}
+    \minimize{x \in \mathbb{R}^n} &amp; \transpose{c}x  \\ 
+    \st &amp; F_0 + x_1F_1 + \cdots + x_n F_n \preceq \zero \\
     &amp; Gx = h
 \end{array}\]
 
-<p>where \(c \in \mathbb{R}^n, G \in \mathbb{R}^{p\times n}, h \in \mathbb{R}^p\), and each \(F_i\) is an \(m \times m\) real symmetric matrix, denoted by \(F_i \in \mathbb{S}^m\). The inequality constraint is known as a <em>linear matrix inequality</em> (LMI), which is a generalized inequality. Note that, while the decision variable in the SDP above is the vector \(x \in \mathbb{R}^n\), they can often appear as bona fide matrices (and not necessarily symmetric matrices), e.g., for \(i \in \{1, \dots, N\}\), \(A_i, B_i, C_i\) are constant matrices of size \(n \times n, n \times n, n \times m\), and \(X \in \mathbb{S}^n_{++}\) and \(Y \in \mathbb{R}^{m \times n}\) are decision variables, then</p>
+<p>where \(c \inR^n, G \inR^{p\times n}, h \inR^p\), and each \(F_i\) is an \(m \times m\) real symmetric matrix, denoted by \(F_i \inS^m\). The inequality constraint is known as a <em>linear matrix inequality</em> (LMI), which is a generalized inequality with respect to the partial order defined by the convex cone of symmetric positive definite matrices. In addition, while the decision variable in the SDP above is the vector \(x \inR^n\), they can often appear as bona fide matrices (not even necessarily symmetric matrices) in an SDP. For example, for \(i \in \{1, \dots, N\}\), let \(A_i \inR^{n \times n}, B_i \inR^{n \times n}, C_i \inR^{n \times m}\) be constant coefficient matrices, and let \(X \inS^n_{++}\) and \(Y \inR^{m \times n}\) be unknown decision variables, then</p>
 
-\[F(X) \triangleq F_0 + \sum_{i = 1}^N A_i X B_i + B_i^{\mathsf{T}} X A_i^{\mathsf{T}} + C_i Y + Y^{\mathsf{T}} C_i^{\mathsf{T}}  \succeq \mathbf{0}\]
+\[F(X,Y) \define F_0 + \sum_{i = 1}^N A_i X B_i + \transpose{B}_i X \transpose{A}_i + C_i Y + \transpose{Y} \transpose{C}_i \succeq \zero\]
 
-<p>is a perfectly valid LMI.</p>
+<p>is a perfectly valid LMI in \(X\) and \(Y\). This form of LMIs often appear in SDPs used in, e.g., systems control theory.</p>
 
-<h1 id="to-be-completed">TO BE COMPLETED.</h1>
+<h2 id="equivalent-sdp-formulation-using-trace-of-a-square-matrix">Equivalent SDP formulation using trace of a square matrix</h2>
+<p>The goal of this post is to show that, another SDP formulation, now written with the trace of a matrix, denoted by \(\trace(\cdot)\),</p>
+
+\[\label{eq:sdp-trace}
+\begin{array}{cl}
+    \minimize{X \in \mathbb{S}^{\textbullet}_+} &amp; \trace(CX)  \\ 
+    \st &amp; \trace(A_k X) = b_k, \quad k \in \{1, \dots, q\}\\
+    &amp; X \succeq \zero
+\end{array}\]
+
+<p>is in fact equivalent to \eqref{eq:sdp-lmi}, and we show how to establish this equivalence. We left the dimension of the new variable \(X\) vague on purpose for now, as the construction below will clarify it. Before we do this, let’s recall that the <em>trace</em> of a square matrix is defined as the sum of its diagonal elements, and is connected to the standard inner product on \(\mathbb{R}^{m \times n}\) via</p>
+
+\[\trace(\transpose{X}Y) = \langle X, Y \rangle = \sum_{i=1}^{m}\sum_{j=1}^n X_{ij}Y_{ij}.\]
+
+<p>There are many additional properties of the matrix trace and its generalization that we will not discuss here, and we include some relative references at the end of this post.</p>
+
+<p>We are now ready to convert \eqref{eq:sdp-lmi} into \eqref{eq:sdp-trace}. First, from the left-hand side of the LMI in \eqref{eq:sdp-lmi}, define a slack variable from the left-hand side of the LMI in \eqref{eq:sdp-lmi}:</p>
+
+\[\label{eq:X-tilde}
+\Tilde{X} \define -F\_0 - \sum_{i=1}^n x\_i F\_i\]
+
+<p>We further decompose the decision variable \(x\) element-wise by its nonnegative part and its nonpositive part, i.e., \(x = x^+ - x^-\), in which both \(x^+\) and \(x^-\) are non-negative element-wise. (Of course, such decomposition is not unique, and we just pick one). We also denote the diagonal matrix formed by placing the elements of a vector \(v\) on its main diagonal as \(\diag(v)\). We claim that the block diagonal matrix</p>
+
+\[X \define \begin{bmatrix}
+    -\Tilde{X} &amp; \\
+    &amp; \diag(x^+) \\
+    &amp; &amp; \diag(x^-)
+\end{bmatrix} \inR^{(m+2n) \times (m+2n)}\]
+
+<p>is exactly the decision variable in \eqref{sdp-trace}. As a sanity check, since \(F(x) \preceq \zero\) in \eqref{eq:sdp-lmi}, the new decision variable $X$ above is positive semidefinite, and should be a sparse matrix provided that \(m\) is not significantly larger than \(n\). 
+Analogous to the decomposition of \(x\), we can decompose the cost coefficient \(c\) in \eqref{eq:sdp-lmi} as \(c = c^+ - c^-\), in which both \(c^+\) and \(c^-\) are non-negative element-wise, and construct the diagonal matrix</p>
+
+\[C \define \begin{bmatrix}
+    \zero_{m\times m} &amp; \\
+    &amp; \diag(c^+) \\
+    &amp; &amp; \diag(c^-)
+\end{bmatrix} \inR^{(m+2n) \times (m+2n)}\]
+
+<p>which satisfies \(\trace(CX) = \transpose{c}x\). We can now compare against \eqref{eq:sdp-lmi}, and see that we need to handle the \(q\) equality constraints in \eqref{eq:sdp-trace}, which has two sources. The first one is due to the definition of the slack variable \(\Tilde{X}\) in \eqref{eq:X-tilde}, which must be satisfied element-wise. Thus, given the coefficient matrices \(F_i \inS^{m}\), we need to introduce (at most) \(m(m+1)/2\) equality constraints as follows: define the constant matrices</p>
+
+\[\label{eq:F-tilde}
+\Tilde{F}_{j\ell} \define \begin{bmatrix}
+    \Delta_{\ell j} &amp; \\
+    &amp; \diag(F_{i,j \ell}) \\
+    &amp; &amp; -\diag(F_{i,j \ell}) 
+\end{\bmatrix} \inR^{(m+2n)\times (m+2n)}\]
+
+<p>where \(\Delta_{\ell j} \inR^{m \times m}\) is the indicator matrix with \(1\) at the \(\ell, j\)-th element and zero everywhere else, and</p>
+
+\[\diag(F_{i,j \ell}) \define \begin{bmatrix} 
+        (F_1)_{j\ell} &amp; \\
+        &amp; (F_2)_{j\ell} &amp; \\
+        &amp; &amp; \ddots &amp; \\
+        &amp; &amp; &amp; (F_n)_{j\ell} &amp; \\
+    \end{bmatrix} \inR^{n \times n}\]
+
+<p>is a diagonal matrix with the \(j,\ell\)-th elements of matrices \(F_1, \dots, F_n\) on its main diagonal. Thus, we can verify that</p>
+
+\[\begin{align}
+    \trace(\Tilde{F}_{j\ell} X) &amp;= \trace(\Delta_{\ell j} \Tilde{X}) + \sum_{i=1}^n x_i^+ (F_i)_{ij} - \sum_{i=1}^n x_i^- (F_i)_{ij} \nonumber \\
+                        &amp;= \Tilde{X}_{j\ell} + \sum_{i=1}^n(x_i^+  - x_i^-) (F_i)_{ij} \nonumber \\
+                        &amp;= -(F_0)_{ij} - \sum_{i=1}^n x\_i (F_i)_{ij} +  \sum_{i=1}^n x\_i (F_i)_{ij} \nonumber \\
+                        &amp;= -(F_0)_{ij}  \label{eq:eq-constraint-lmi}
+\end{align}\]
+
+<p>There are a total of \(m(m+1)/2\) constraints like \eqref{eq:eq-constraint-lmi}, and they form the first part of the equality trace constraints in \eqref{eq:sdp-trace}. The second and the last part comes from \(Gx = h\) in \eqref{eq:sdp-lmi}, which can be transformed by constructing</p>
+
+\[\label{eq:G-tilde}
+    \Tilde{G}_{i} \define \begin{bmatrix}
+        \zero_{m \times m} &amp; \\
+        &amp; \diag(\transpose{e}_i G) \\
+        &amp; &amp; -\diag(\transpose{e}_i G) 
+    \end{bmatrix} \inR^{(m+2n)\times (m+2n)}\]
+
+<p>in which \(\transpose{e}_i G \inR^n\) selects the \(i\)-th row of \(G\). For \(i \in \{1, \dots, p}\), \(\transpose{e}_i G x = h_i), so \(Gx = h\) in \eqref{eq:sdp-lmi} is equivalent to the \(p\) trace constraints</p>
+
+\[\Tilde{G}_i X = h_i\]
+
+<p>Thus, from \eqref{eq:sdp-trace}, we have a total of</p>
+
+\[q = \frac{m(m+1)}{2} + p\]
+
+<p>trace equality constraints, and the new coefficient matrices \(A_k\) correspond to \(\Tilde{F}_{j\ell}\) and \(\Tilde{G}_i\) constructed in \eqref{eq:F-tilde} and \eqref{eq:G-tilde}, respectively, while the coefficients \(b_k\) correspond to \(-(F_0)_{ij}\) and \(h_i\), respectively.</p>
+
+<h2 id="further-readings-and-references">Further readings and references</h2>
+<ol>
+  <li>General introduction and basic examples of SDPs, see Chapter 4.6.2 of <a href="https://web.stanford.edu/~boyd/cvxbook/bv_cvxbook.pdf">Convex Optimization</a></li>
+  <li><a href="https://doi.org/10.1137/1038003">SIAM survey</a> of SDPs and numerical solution methods</li>
+  <li>LMIs in systems and control theory <a href="https://web.stanford.edu/~boyd/lmibook/lmibook.pdf">book</a></li>
+  <li>Further trace properties and generalizations: see Chapter 8.D of <a href="https://linear.axler.net/LADR4e.pdf">Linear Algebra Done Right</a></li>
+</ol>
+
+<p><em>Last updated: 2025-07-21 17:37 EST</em></p>
 
 
         
@@ -404,7 +538,7 @@
 
 <div class="page__footer-copyright">
   &copy; 2025 Liangjie (Jeffrey) Chen, Powered by <a href="http://jekyllrb.com" rel="nofollow">Jekyll</a> &amp; <a href="https://github.com/academicpages/academicpages.github.io">AcademicPages</a>, a fork of <a href="https://mademistakes.com/work/minimal-mistakes-jekyll-theme/" rel="nofollow">Minimal Mistakes</a>.<br />
-  Site last updated 2025-07-20
+  Site last updated 2025-07-21
 </div>
 
       </footer>

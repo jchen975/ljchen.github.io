@@ -113,6 +113,47 @@
 
 <!-- end custom head snippets -->
 
+    <script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    TeX: {
+      extensions: ["AMSmath.js", "mathrsfs.js"],
+      tags: "ams",
+      Macros: {
+        inR: "\\in \\mathbb{R}", 
+        inC: "\\in \\mathbb{C}",
+        inZ: "\\in \\mathbb{Z}",
+        inN: "\\in \\mathbb{N}",
+        inQ: "\\in \\mathbb{Q}",
+        inF: "\\in \\mathbb{F}",
+        inS: "\\in \\mathbb{S}",
+
+        j: "\\boldsymbol{\\mathrm{j}}", 
+        e: "\\boldsymbol{\\mathrm{e}}",
+        re: "\\mathrm{Re}",
+        im: "\\mathrm{Im}",
+        det: "\\mathrm{det}",
+
+        minimize: ["\\underset{#1}{\\mathrm{minimize}}", 1],
+        maximize: ["\\underset{#1}{\\mathrm{maximize}}", 1],
+        st: "\\mathrm{subject\\ to}",
+
+        trace: "\\mathrm{tr}",
+        diag: "\\mathrm{diag}",
+
+        goesto: "\\rightarrow",
+        implies: "\\Rightarrow",
+        define: "\triangleq",
+        
+        transpose: ["{#1}^{\\mathsf{T}}", 1], 
+        pinv: ["{#1}^{\\dagger}", 1],
+
+        zero: "\\mathbf{0}",
+        one: "\\mathbf{1}"
+      }
+    }
+  });
+</script>
+<script src="https://cdn.jsdelivr.net/npm/mathjax@2/MathJax.js?config=TeX-AMS_HTML"></script>
   </head>
 
   <body>
@@ -274,7 +315,7 @@
 
     <h2 class="archive__item-title" itemprop="headline">
       
-        <a href="https://ljchen.ca/posts/2021/05/sdp/" rel="permalink">Semidefinite program formulations: linear matrix inequality and trace operator
+        <a href="https://ljchen.ca/posts/2021/05/sdp/" rel="permalink">Equivalent formulations of semidefinite programs using linear matrix inequality and trace
 </a>
       
     </h2>
@@ -284,7 +325,7 @@
 
 
   
-	  1 minute read
+	  6 minute read
 	
 </p>
     
@@ -294,7 +335,7 @@
         
 
     
-    <p class="archive__item-excerpt" itemprop="description"><p>In this post, I derive two equivalent formulations of a semidefinite program.</p>
+    <p class="archive__item-excerpt" itemprop="description"><p>A semidefinite program written using the linear matrix inequality can be equivalently written using the trace of a matrix.</p>
 
 </p>
     
@@ -338,7 +379,7 @@
 
 <div class="page__footer-copyright">
   &copy; 2025 Liangjie (Jeffrey) Chen, Powered by <a href="http://jekyllrb.com" rel="nofollow">Jekyll</a> &amp; <a href="https://github.com/academicpages/academicpages.github.io">AcademicPages</a>, a fork of <a href="https://mademistakes.com/work/minimal-mistakes-jekyll-theme/" rel="nofollow">Minimal Mistakes</a>.<br />
-  Site last updated 2025-07-20
+  Site last updated 2025-07-21
 </div>
 
       </footer>
