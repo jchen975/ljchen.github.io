@@ -119,47 +119,47 @@
 
 <!-- end custom head snippets -->
 
-    <script type="text/x-mathjax-config">
-  MathJax.Hub.Config({
-    TeX: {
-      extensions: ["AMSmath.js", "mathrsfs.js"],
-      tags: "ams",
-      Macros: {
-        inR: "\\in \\mathbb{R}", 
-        inC: "\\in \\mathbb{C}",
-        inZ: "\\in \\mathbb{Z}",
-        inN: "\\in \\mathbb{N}",
-        inQ: "\\in \\mathbb{Q}",
-        inF: "\\in \\mathbb{F}",
-        inS: "\\in \\mathbb{S}",
+    <script>
+window.MathJax = {
+  tex: {
+    packages: ['base', 'ams'],
+    tags: 'ams',
+    macros: {
+      inR: "\\in \\mathbb{R}",
+      inC: "\\in \\mathbb{C}",
+      inZ: "\\in \\mathbb{Z}",
+      inN: "\\in \\mathbb{N}",
+      inQ: "\\in \\mathbb{Q}",
+      inF: "\\in \\mathbb{F}",
+      inS: "\\in \\mathbb{S}",
 
-        j: "\\boldsymbol{\\mathbf{j}}", 
-        e: "\\boldsymbol{\\mathbf{e}}",
-        re: "\\mathrm{Re}",
-        im: "\\mathrm{Im}",
-        det: "\\mathrm{det}",
+      j: "\\boldsymbol{\\mathbf{j}}",
+      e: "\\boldsymbol{\\mathbf{e}}",
+      re: "\\mathrm{Re}",
+      im: "\\mathrm{Im}",
+      det: "\\mathrm{det}",
 
-        minimize: ["\\underset{#1}{\\mathrm{minimize}}", 1],
-        maximize: ["\\underset{#1}{\\mathrm{maximize}}", 1],
-        st: "\\mathrm{subject\\ to}",
+      minimize: ["\\underset{#1}{\\mathrm{minimize}}", 1],
+      maximize: ["\\underset{#1}{\\mathrm{maximize}}", 1],
+      st: "\\mathrm{subject\\ to}",
 
-        trace: "\\mathrm{tr}",
-        diag: "\\mathrm{diag}",
+      trace: "\\mathrm{tr}",
+      diag: "\\mathrm{diag}",
 
-        goesto: "\\rightarrow",
-        implies: "\\Rightarrow",
-        define: "\\triangleq",
-        
-        transpose: ["{#1}^{\\mathsf{T}}", 1], 
-        pinv: ["{#1}^{\\dagger}", 1],
+      goesto: "\\rightarrow",
+      implies: "\\Rightarrow",
+      define: "\\triangleq",
 
-        zero: "\\mathbf{0}",
-        one: "\\mathbf{1}"
-      }
+      transpose: ["{#1}^{\\mathsf{T}}", 1],
+      pinv: ["{#1}^{\\dagger}", 1],
+
+      zero: "\\mathbf{0}",
+      one: "\\mathbf{1}"
     }
-  });
+  }
+};
 </script>
-<script src="https://cdn.jsdelivr.net/npm/mathjax@2/MathJax.js?config=TeX-AMS_HTML"></script>
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
   </head>
 
   <body>
@@ -335,17 +335,15 @@
 <h2 id="semidefinite-program-and-linear-matrix-inequality">Semidefinite program and linear matrix inequality</h2>
 <p>Semidefinite programs (SDPs) are a specific type of <em>conic form programs</em>, which is a subclass of convex optimization problems with respect to the <a href="https://en.wikipedia.org/wiki/Loewner_order">Lowener order</a>, that is, the cone of (symmetric) positive semidefinite matrices denoted by \(\mathbb{S}_{+}^{n}\). SDPs are typically formulated as</p>
 
-\[\begin{equation}\label{eq:sdp-lmi}
-\left.
+\[\begin{equation}\label{eq:sdp-lmi} 
 \begin{array}{cl}
     \minimize{x \in \mathbb{R}^n} &amp; \transpose{c}x  \\ 
     \st &amp; F_0 + x_1F_1 + \cdots + x_n F_n \preceq \zero \\
     &amp; Gx = h
-\end{array} 
-\right.,
+\end{array}  
 \end{equation}\]
 
-<p>where \(c \inR^n, G \inR^{p\times n}, h \inR^p\), and each \(F_i\) is an \(m \times m\) real symmetric matrix, denoted by \(F_i \inS^m\). The inequality constraint is known as a <em>linear matrix inequality</em> (LMI), which is a generalized inequality with respect to the partial order defined by the convex cone of symmetric positive definite matrices. In addition, while the decision variable in the SDP above is the vector \(x \inR^n\), they can often appear as bona fide matrices (not even necessarily symmetric matrices) in an SDP. For example, for \(i \in \{1, \dots, N\}\), let \(A_i \inR^{n \times n}, B_i \inR^{n \times n}, C_i \inR^{n \times m}\) be constant coefficient matrices, and let \(X \inS^n_{++}\) and \(Y \inR^{m \times n}\) be unknown decision variables, then</p>
+<p>where \(c \inR^n, G \inR^{p\times n}, h \inR^p\), and each \(F_i\) is an \(m \times m\) real symmetric matrix, denoted by \(F_i \inS^m\). The inequality constraint is known as a <em>linear matrix inequality</em> (LMI), which is a generalized inequality with respect to the partial order defined by the convex cone of symmetric positive definite matrices. In addition, while the decision variable in the SDP above is the vector \(x \inR^n\), they can often appear as matrices (not even necessarily symmetric matrices) in an SDP. For example, for \(i \in \{1, \dots, N\}\), let \(A_i \inR^{n \times n}, B_i \inR^{n \times n}, C_i \inR^{n \times m}\) be constant coefficient matrices, and let \(X \inS^n_{++}\) and \(Y \inR^{m \times n}\) be unknown decision variables, then</p>
 
 \[F(X,Y) \define F_0 + \sum_{i = 1}^N A_i X B_i + \transpose{B}_i X \transpose{A}_i + C_i Y + \transpose{Y} \transpose{C}_i \succeq \zero\]
 
@@ -362,16 +360,16 @@
 \end{array} 
 \end{equation}\]
 
-<p>is in fact equivalent to \eqref{eq:sdp-lmi}, and we show how to establish this equivalence. We left the dimension of the new variable \(X\) vague on purpose for now, as the construction below will clarify it. Before we do this, let’s recall that the <em>trace</em> of a square matrix is defined as the sum of its diagonal elements, and is connected to the standard inner product on \(\mathbb{R}^{m \times n}\) via</p>
+<p>is in fact equivalent to \eqref{eq:sdp-lmi}, and we show how to establish this equivalence. We left the dimension of the new variable \(X\) vague on purpose for now, as the construction below will clarify it. Before we do this, let’s recall that the <em>trace</em> of a square matrix is defined as the sum of its diagonal elements, and is connected to the standard Frobenius inner product on \(\mathbb{R}^{m \times n}\) via</p>
 
-\[\trace(\transpose{X}Y) = \langle X, Y \rangle = \sum_{i=1}^{m}\sum_{j=1}^n X_{ij}Y_{ij}.\]
+\[\trace(\transpose{X}Y) = \trace(X\transpose{Y}) = \langle X, Y \rangle = \sum_{i=1}^{m}\sum_{j=1}^n X_{ij}Y_{ij}.\]
 
 <p>There are many additional properties of the matrix trace and its generalization that we will not discuss here, and we include some relative references at the end of this post.</p>
 
 <p>We are now ready to convert \eqref{eq:sdp-lmi} into \eqref{eq:sdp-trace}. First, from the left-hand side of the LMI in \eqref{eq:sdp-lmi}, define a slack variable from the left-hand side of the LMI in \eqref{eq:sdp-lmi}:</p>
 
 \[\label{eq:X-tilde}
-\tilde{X} \define -F\_0 - \sum_{i=1}^n x\_i F\_i\]
+\tilde{X} \define -F_0 - \sum_{i=1}^n x_i F_i.\]
 
 <p>We further decompose the decision variable \(x\) element-wise by its nonnegative part and its nonpositive part, i.e., \(x = x^+ - x^-\), in which both \(x^+\) and \(x^-\) are non-negative element-wise. (Of course, such decomposition is not unique, and we just pick one). We also denote the diagonal matrix formed by placing the elements of a vector \(v\) on its main diagonal as \(\diag(v)\). We claim that the block diagonal matrix</p>
 
@@ -411,10 +409,10 @@ Analogous to the decomposition of \(x\), we can decompose the cost coefficient \
 <p>is a diagonal matrix with the \(j,\ell\)-th elements of matrices \(F_1, \dots, F_n\) on its main diagonal. Thus, we can verify that</p>
 
 \[\begin{align}
-    \trace(\tilde{F}_{j\ell} X) &amp;= \trace(\Delta_{\ell j} \tilde{X}) + \sum_{i=1}^n x_i^+ (F_i)_{ij} - \sum_{i=1}^n x_i^- (F_i)_{ij} \nonumber \\
-                        &amp;= \tilde{X}_{j\ell} + \sum_{i=1}^n(x_i^+  - x_i^-) (F_i)_{ij} \nonumber \\
-                        &amp;= -(F_0)_{ij} - \sum_{i=1}^n x\_i (F_i)_{ij} +  \sum_{i=1}^n x\_i (F_i)_{ij} \nonumber \\
-                        &amp;= -(F_0)_{ij}  \label{eq:eq-constraint-lmi}
+    \trace(\tilde{F}_{j\ell} X) &amp;= \trace(\Delta_{\ell j} \tilde{X}) + \sum_{i=1}^n x_i^+ (F_i)_{j\ell} - \sum_{i=1}^n x_i^- (F_i)_{ij} \nonumber \\
+                        &amp;= \tilde{X}_{j\ell} + \sum_{i=1}^n(x_i^+  - x_i^-) (F_i)_{j\ell} \nonumber \\
+                        &amp;= -(F_0)_{j\ell} - \sum_{i=1}^n x\_i (F_i)_{j\ell} +  \sum_{i=1}^n x\_i (F_i)_{j\ell} \nonumber \\
+                        &amp;= -(F_0)_{j\ell}  \label{eq:eq-constraint-lmi}
 \end{align}\]
 
 <p>There are a total of \(m(m+1)/2\) constraints like \eqref{eq:eq-constraint-lmi}, and they form the first part of the equality trace constraints in \eqref{eq:sdp-trace}. The second and the last part comes from \(Gx = h\) in \eqref{eq:sdp-lmi}, which can be transformed by constructing</p>
@@ -422,11 +420,11 @@ Analogous to the decomposition of \(x\), we can decompose the cost coefficient \
 \[\label{eq:G-tilde}
     \tilde{G}_{i} \define \begin{bmatrix}
         \zero_{m \times m} &amp; \\
-        &amp; \diag(\transpose{e}_i G) \\
-        &amp; &amp; -\diag(\transpose{e}_i G) 
+        &amp; \diag(\transpose{\e}_i G) \\
+        &amp; &amp; -\diag(\transpose{\e}_i G) 
     \end{bmatrix} \inR^{(m+2n)\times (m+2n)}\]
 
-<p>in which \(\transpose{e}_i G \inR^n\) selects the \(i\)-th row of \(G\). For \(i \in \{1, \dots, p}\), \(\transpose{e}_i G x = h_i), so \(Gx = h\) in \eqref{eq:sdp-lmi} is equivalent to the \(p\) trace constraints</p>
+<p>in which \(\transpose{\e}_i G \inR^n\) selects the \(i\)-th row of \(G\). For \(i \in \{1, \dots, p\}\), \(\transpose{\e}_i G x = h_i\), so \(Gx = h\) in \eqref{eq:sdp-lmi} is equivalent to the \(p\) trace constraints</p>
 
 \[\tilde{G}_i X = h_i\]
 
@@ -434,7 +432,7 @@ Analogous to the decomposition of \(x\), we can decompose the cost coefficient \
 
 \[q = \frac{m(m+1)}{2} + p\]
 
-<p>trace equality constraints, and the new coefficient matrices \(A_k\) correspond to \(\tilde{F}_{j\ell}\) and \(\tilde{G}_i\) constructed in \eqref{eq:F-tilde} and \eqref{eq:G-tilde}, respectively, while the coefficients \(b_k\) correspond to \(-(F_0)_{ij}\) and \(h_i\), respectively.</p>
+<p>trace equality constraints, and the new coefficient matrices \(A_k\) correspond to \(\tilde{F}_{j\ell}\) and \(\tilde{G}_i\) constructed in \eqref{eq:F-tilde} and \eqref{eq:G-tilde}, respectively, while the coefficients \(b_k\) correspond to \(-(F_0)_{j\ell}\) and \(h_i\), respectively.</p>
 
 <h2 id="further-readings-and-references">Further readings and references</h2>
 <ol>
