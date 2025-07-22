@@ -9,8 +9,7 @@ redirect_from:
 
 <br>
 <br>
-
-I am a Ph.D. Candidate in the Systems Control Group at University of Toronto, where I also received my B.A.Sc. (with Honours) and M.A.Sc. in 2020 and 2022, respectively. My thesis is in data-driven control theory; specifically, I am working under the guidance of Prof. [John Simpson-Porco](https://www.control.utoronto.ca/~jwsimpson/) to develope low-gain controllers to solve the disturbance rejection problem in unknown linear time-invariant systems using frequency response and input-output data. 
+I am a Ph.D. Candidate in the Systems Control Group at University of Toronto, where I also received my B.A.Sc. (with Honours) and M.A.Sc. in 2020 and 2022, respectively. My thesis is in data-driven control theory; specifically, I am working under the guidance of Prof. [John Simpson-Porco](https://www.control.utoronto.ca/~jwsimpson/) to develop low-gain controllers to solve the disturbance rejection problem in unknown linear time-invariant systems using frequency response and input-output data. 
 
 I am proud to be a recipient of the [NSERC PGS-D](https://search.open.canada.ca/grants/record/nserc-crsng,110_2024_2025_Q4_87,current), [OGS](https://www.sgs.utoronto.ca/awards/ontario-graduate-scholarship/), [QEII-GSST](https://osap.gov.on.ca/OSAPPortal/en/A-ZListofAid/PRDR019236.html), the [Hatch Graduate Scholarship for Sustainable Energy Research](https://energy.utoronto.ca/), and [H. W. Price Research Fellowship in Electrical Engineering](https://www.ece.utoronto.ca/graduates/financial-support/scholarships/) during my graduate studies.  
 
