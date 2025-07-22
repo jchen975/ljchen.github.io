@@ -7,10 +7,13 @@ redirect_from:
   - /about.html
 ---
 
+<br>
+<br>
+<br>
 
-I am a Ph.D. Candidate in the Systems Control Group at University of Toronto, where I also completed my B.A.Sc. (with Honours) and M.A.Sc. in 2020 and 2022, respectively. My thesis is in data-driven control theory; specifically, I am developing low-gain controllers to solve the disturbance rejection problem in unknown linear time-invariant systems using frequency response and input-output data. 
+I am a Ph.D. Candidate in the Systems Control Group at University of Toronto, where I also received my B.A.Sc. (with Honours) and M.A.Sc. in 2020 and 2022, respectively. My thesis is in data-driven control theory; specifically, I am developing low-gain controllers to solve the disturbance rejection problem in unknown linear time-invariant systems using frequency response and input-output data. 
 
-My work is supervised by Prof. [John Simpson-Porco](https://www.control.utoronto.ca/~jwsimpson/) for my Ph.D. and M.A.Sc., and I am proud to be a recipient of the [NSERC PGS-D](https://search.open.canada.ca/grants/record/nserc-crsng,110_2024_2025_Q4_87,current), [OGS](https://www.sgs.utoronto.ca/awards/ontario-graduate-scholarship/), [QEII-GSST](https://osap.gov.on.ca/OSAPPortal/en/A-ZListofAid/PRDR019236.html) and the [Hatch Graduate Scholarship for Sustainable Energy Research](https://energy.utoronto.ca/). 
+My work is supervised by Prof. [John Simpson-Porco](https://www.control.utoronto.ca/~jwsimpson/) for my Ph.D. and M.A.Sc., and I am proud to be a recipient of the [NSERC PGS-D](https://search.open.canada.ca/grants/record/nserc-crsng,110_2024_2025_Q4_87,current), [OGS](https://www.sgs.utoronto.ca/awards/ontario-graduate-scholarship/), [QEII-GSST](https://osap.gov.on.ca/OSAPPortal/en/A-ZListofAid/PRDR019236.html), the [Hatch Graduate Scholarship for Sustainable Energy Research](https://energy.utoronto.ca/), and [H. W. Price Research Fellowship in Electrical Engineering](https://www.ece.utoronto.ca/graduates/financial-support/scholarships/). 
 
 Previously, I worked on the [AC power flow problem](https://en.wikipedia.org/wiki/Power-flow_study) from 2019 to 2022. I worked with Prof. [Zeb Tate](https://www.ece.utoronto.ca/people/tate-j/) to develop [convolutional neural networks](https://arxiv.org/abs/2004.09342) to accelerate the Newton-Raphson power flow computations in my undergrad, and I later developed a more rigorous [fixed-point algorithm](https://ieeexplore.ieee.org/abstract/document/10156226) to solve the AC power flow problem during my master's. In addition to my research work, I am also actively exploring and learning about topics in deep reinforcement learning, operations research, renewable energy market and quantitative finance. 
 
