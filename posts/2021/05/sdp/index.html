@@ -371,8 +371,9 @@
 
 <p>We are now ready to convert \eqref{eq:sdp-lmi} into \eqref{eq:sdp-trace}. First, from the left-hand side of the LMI in \eqref{eq:sdp-lmi}, define a slack variable from the left-hand side of the LMI in \eqref{eq:sdp-lmi}:</p>
 
-\[\label{eq:X-tilde}
-\tilde{X} \define -F_0 - \sum_{i=1}^n x_i F_i.\]
+\[\begin{equation}\label{eq:X-tilde}
+\tilde{X} \define -F_0 - \sum_{i=1}^n x_i F_i.
+\end{equation}\]
 
 <p>We further decompose the decision variable \(x\) element-wise by its nonnegative part and its nonpositive part, i.e., \(x = x^+ - x^-\), in which both \(x^+\) and \(x^-\) are non-negative element-wise. (Of course, such decomposition is not unique, and we just pick one). We also denote the diagonal matrix formed by placing the elements of a vector \(v\) on its main diagonal as \(\diag(v)\). We claim that the block diagonal matrix</p>
 
@@ -382,8 +383,8 @@
     &amp; &amp; \diag(x^-)
 \end{bmatrix} \inR^{(m+2n) \times (m+2n)}\]
 
-<p>is exactly the decision variable in \eqref{eq:sdp-trace}. As a sanity check, since \(F(x) \preceq \zero\) in \eqref{eq:sdp-lmi}, the new decision variable $X$ above is positive semidefinite, and should be a sparse matrix provided that \(m\) is not significantly larger than \(n\). 
-Analogous to the decomposition of \(x\), we can decompose the cost coefficient \(c\) in \eqref{eq:sdp-lmi} as \(c = c^+ - c^-\), in which both \(c^+\) and \(c^-\) are non-negative element-wise, and construct the diagonal matrix</p>
+<p>is exactly the decision variable in \eqref{eq:sdp-trace}. As a sanity check, since \(F(x) \preceq \zero\) in \eqref{eq:sdp-lmi}, the new decision variable \(X\) above is positive semidefinite, and should be a sparse matrix provided that \(m\) is not significantly larger than \(n\). 
+Analogous to the decomposition of \(x\), we can decompose the cost vector \(c\) in \eqref{eq:sdp-lmi} as \(c = c^+ - c^-\), in which both \(c^+\) and \(c^-\) are non-negative element-wise, and construct the diagonal cost matrix</p>
 
 \[C \define \begin{bmatrix}
     \zero_{m\times m} &amp; \\
@@ -391,14 +392,15 @@ Analogous to the decomposition of \(x\), we can decompose the cost coefficient \
     &amp; &amp; \diag(c^-)
 \end{bmatrix} \inR^{(m+2n) \times (m+2n)}\]
 
-<p>which satisfies \(\trace(CX) = \transpose{c}x\). We can now compare against \eqref{eq:sdp-lmi}, and see that we need to handle the \(q\) equality constraints in \eqref{eq:sdp-trace}, which has two sources. The first one is due to the definition of the slack variable \(\tilde{X}\) in \eqref{eq:X-tilde}, which must be satisfied element-wise. Thus, given the coefficient matrices \(F_i \inS^{m}\), we need to introduce (at most) \(m(m+1)/2\) equality constraints as follows: define the constant matrices</p>
+<p>which satisfies \(\trace(CX) = \transpose{c}x\). We can now compare against \eqref{eq:sdp-lmi}, and see that we need to handle the \(q\) equality constraints in \eqref{eq:sdp-trace}, which has two sources. The first one is due to the definition of the slack variable \(\tilde{X}\) in \eqref{eq:X-tilde}, which must be satisfied element-wise. Thus, given the coefficient matrices \(F_i \inS^{m}\), we need to introduce (at most) \(\frac{m(m+1)}{2}\) equality constraints as follows: define the constant matrices</p>
 
-\[\label{eq:F-tilde}
+\[\begin{equation} \label{eq:F-tilde}
 \tilde{F}_{j\ell} \define \begin{bmatrix}
     \Delta_{\ell j} &amp; \\
     &amp; \diag(F_{i,j \ell}) \\
     &amp; &amp; -\diag(F_{i,j \ell}) 
-\end{bmatrix} \inR^{(m+2n)\times (m+2n)}\]
+\end{bmatrix} \inR^{(m+2n)\times (m+2n)}, 
+\end{equation}\]
 
 <p>where \(\Delta_{\ell j} \inR^{m \times m}\) is the indicator matrix with \(1\) at the \(\ell, j\)-th element and zero everywhere else, and</p>
 
@@ -414,31 +416,29 @@ Analogous to the decomposition of \(x\), we can decompose the cost coefficient \
 \[\begin{align}
     \trace(\tilde{F}_{j\ell} X) &amp;= \trace(\Delta_{\ell j} \tilde{X}) + \sum_{i=1}^n x_i^+ (F_i)_{j\ell} - \sum_{i=1}^n x_i^- (F_i)_{j\ell} \nonumber \\
                         &amp;= \tilde{X}_{j\ell} + \sum_{i=1}^n(x_i^+  - x_i^-) (F_i)_{j\ell} \nonumber \\
-                        &amp;= -(F_0)_{j\ell} - \sum_{i=1}^n x\_i (F_i)_{j\ell} +  \sum_{i=1}^n x\_i (F_i)_{j\ell} \nonumber \\
+                        &amp;= -(F_0)_{j\ell} - \sum_{i=1}^n x_i (F_i)_{j\ell} +  \sum_{i=1}^n x_i (F_i)_{j\ell} \nonumber \\
                         &amp;= -(F_0)_{j\ell}  \label{eq:eq-constraint-lmi}
 \end{align}\]
 
-<p>There are a total of \(m(m+1)/2\) constraints like \eqref{eq:eq-constraint-lmi}, and they form the first part of the equality trace constraints in \eqref{eq:sdp-trace}. The second and the last part comes from \(Gx = h\) in \eqref{eq:sdp-lmi}, which can be transformed by constructing</p>
+<p>There are a total of \(\frac{m(m+1)}{2}\) constraints like \eqref{eq:eq-constraint-lmi}, and they form the first part of the equality trace constraints in \eqref{eq:sdp-trace}. The second and the last part comes from \(Gx = h\) in \eqref{eq:sdp-lmi}, which can be transformed by constructing</p>
 
-<p>\begin{equation} \label{eq:G-tilde}
-    \tilde{G}<em>{i} \define \begin{bmatrix}
-        \zero</em>{m \times m} &amp; <br />
-        &amp; \diag(\transpose{\e}_i G) <br />
+\[\begin{equation} \label{eq:G-tilde}
+    \tilde{G}_{i} \define \begin{bmatrix}
+        \zero_{m \times m} &amp; \\
+        &amp; \diag(\transpose{\e}_i G) \\
         &amp; &amp; -\diag(\transpose{\e}_i G) 
     \end{bmatrix} \inR^{(m+2n)\times (m+2n)}
-\end{equation}</p>
-
-<p>in which \(\transpose{\e}_i G \inR^n\) selects the \(i\)-th row of \(G\). For \(i \in \{1, \dots, p\}\), \(\transpose{\e}_i G x = h_i\), so \(Gx = h\) in \eqref{eq:sdp-lmi} is equivalent to the \(p\) trace constraints</p>
-
-\[\begin{equation}
-\tilde{G}_i X = h_i.
 \end{equation}\]
+
+<p>in which \(e_i \inR^p\) is the \(i\)-th unit vector, thus \(\transpose{\e}_i G \inR^n\) selects the \(i\)-th row of \(G\). For \(i \in \{1, \dots, p\}\), \(\transpose{\e}_i G x = h_i\), so \(Gx = h\) in \eqref{eq:sdp-lmi} is equivalent to the \(p\) trace constraints</p>
+
+\[\tilde{G}_i X = h_i.\]
 
 <p>Thus, from \eqref{eq:sdp-trace}, we have a total of</p>
 
 \[q = \frac{m(m+1)}{2} + p\]
 
-<p>trace equality constraints, and the new coefficient matrices \(A_k\) correspond to \(\tilde{F}_{j\ell}\) and \(\tilde{G}_i\) constructed in \eqref{eq:F-tilde} and \eqref{eq:G-tilde}, respectively, while the coefficients \(b_k\) correspond to \(-(F_0)_{j\ell}\) and \(h_i\), respectively.</p>
+<p>trace equality constraints of the form \(\trace(A_kX) = b_k\), in which the new coefficient matrices \(A_k\) correspond to \(\tilde{F}_{j\ell}\) and \(\tilde{G}_i\) constructed in \eqref{eq:F-tilde} and \eqref{eq:G-tilde}, respectively, while the coefficients \(b_k\) correspond to \(-(F_0)_{j\ell}\) and \(h_i\), respectively.</p>
 
 <h2 id="further-readings-and-references">Further readings and references</h2>
 <ol>
@@ -448,7 +448,7 @@ Analogous to the decomposition of \(x\), we can decompose the cost coefficient \
   <li>Further trace properties and generalizations: Chapter 8.D of <a href="https://linear.axler.net/LADR4e.pdf">Linear Algebra Done Right</a></li>
 </ol>
 
-<p><em>Last updated: 2025-07-21 18:53 EST</em></p>
+<p><em>Last updated: 2025-07-21 22:40 EST</em></p>
 
 
         
@@ -546,7 +546,7 @@ Analogous to the decomposition of \(x\), we can decompose the cost coefficient \
 
 <div class="page__footer-copyright">
   &copy; 2025 Liangjie (Jeffrey) Chen, Powered by <a href="http://jekyllrb.com" rel="nofollow">Jekyll</a> &amp; <a href="https://github.com/academicpages/academicpages.github.io">AcademicPages</a>, a fork of <a href="https://mademistakes.com/work/minimal-mistakes-jekyll-theme/" rel="nofollow">Minimal Mistakes</a>.<br />
-  Site last updated 2025-07-21
+  Site last updated 2025-07-22
 </div>
 
       </footer>
